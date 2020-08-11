@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MoviesListResponse>, response: Response<MoviesListResponse>) {
                 if (response.code() == 200) {
                     val moviesResponse= response.body()!!
-                    populateMoviesList(moviesResponse.items)
+                    val sortedList =moviesResponse.items.sortedBy {moviesResponse.items?.toString() }
+                    populateMoviesList(sortedList)
                 }
             }
             override fun onFailure(call: Call<MoviesListResponse>, t: Throwable) {
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         recycler.adapter=adapter
         swipe_refresh_layout.isRefreshing=false
     }
+
 
     private fun changeSwipeColor() {
         val color = Color.parseColor("#FFFFFF")

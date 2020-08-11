@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MoviesInc</string>
+    <string name="vote_Average">Vote Average:</string>
+</resources>

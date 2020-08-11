@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RetrofitService {
-    @GET("/list/1")
-    fun getMoviesList(@Query("api_key") api_key: String):Call<MoviesListResponse>
+    @GET("/3/list/2?")
+    fun getMoviesList(@Query("api_key") api_key: String, @Query("language") language: String):Call<MoviesListResponse>
 }

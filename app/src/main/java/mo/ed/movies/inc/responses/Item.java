@@ -4,6 +4,8 @@ package mo.ed.movies.inc.responses;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
+import mo.ed.movies.inc.util.Constants;
+
 @SuppressWarnings("unused")
 public class Item {
 

@@ -1,6 +1,8 @@
 package mo.ed.movies.inc.ui.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item.view.*
 import mo.ed.movies.inc.R
 import mo.ed.movies.inc.responses.Item
+import mo.ed.movies.inc.ui.activities.MovieDetailActivity
 import mo.ed.movies.inc.util.Constants
 
 class MoviesRecyclerAdapter(val context : Context, private val movies:List<Item>):RecyclerView.Adapter<MoviesRecyclerAdapter.MoviesHolder>() {
@@ -22,6 +25,7 @@ class MoviesRecyclerAdapter(val context : Context, private val movies:List<Item>
         private val movieTitle=view.movieTitle
         private val movieRate=view.vote_average_value
         private val movieDate=view.vote_release_value
+        public val layout=view.constraint_layout
 
         fun bind(movie: Item, context: Context){
 //            val options = RequestOptions()
@@ -51,5 +55,14 @@ class MoviesRecyclerAdapter(val context : Context, private val movies:List<Item>
 
     override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
         holder.bind(movies[position],context)
+        holder.layout.setOnClickListener {
+            val movie=movies[position]
+            val bundle:Bundle= Bundle()
+            bundle.putParcelable(Constants.MOVIE_KEY,movie)
+            context.startActivity(Intent(context,MovieDetailActivity::class.java).putExtras(bundle).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
+    }
+    public interface OnMovieClicked {
+        fun OnMovieDetailsCalled()
     }
 }

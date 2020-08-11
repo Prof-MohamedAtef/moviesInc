@@ -1,13 +1,17 @@
 
 package mo.ed.movies.inc.responses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 import mo.ed.movies.inc.util.Constants;
 
 @SuppressWarnings("unused")
-public class Item {
+public class Item implements Parcelable {
 
     @SerializedName("adult")
     private Boolean mAdult;
@@ -39,6 +43,53 @@ public class Item {
     private Double mVoteAverage;
     @SerializedName("vote_count")
     private Long mVoteCount;
+
+    protected Item(Parcel in) {
+        byte tmpMAdult = in.readByte();
+        mAdult = tmpMAdult == 0 ? null : tmpMAdult == 1;
+        mBackdropPath = in.readString();
+        if (in.readByte() == 0) {
+            mId = null;
+        } else {
+            mId = in.readLong();
+        }
+        mMediaType = in.readString();
+        mOriginalLanguage = in.readString();
+        mOriginalTitle = in.readString();
+        mOverview = in.readString();
+        if (in.readByte() == 0) {
+            mPopularity = null;
+        } else {
+            mPopularity = in.readDouble();
+        }
+        mPosterPath = in.readString();
+        mReleaseDate = in.readString();
+        mTitle = in.readString();
+        byte tmpMVideo = in.readByte();
+        mVideo = tmpMVideo == 0 ? null : tmpMVideo == 1;
+        if (in.readByte() == 0) {
+            mVoteAverage = null;
+        } else {
+            mVoteAverage = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            mVoteCount = null;
+        } else {
+            mVoteCount = in.readLong();
+        }
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public Boolean getAdult() {
         return mAdult;
@@ -160,4 +211,46 @@ public class Item {
         mVoteCount = voteCount;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (mAdult == null ? 0 : mAdult ? 1 : 2));
+        dest.writeString(mBackdropPath);
+        if (mId == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(mId);
+        }
+        dest.writeString(mMediaType);
+        dest.writeString(mOriginalLanguage);
+        dest.writeString(mOriginalTitle);
+        dest.writeString(mOverview);
+        if (mPopularity == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(mPopularity);
+        }
+        dest.writeString(mPosterPath);
+        dest.writeString(mReleaseDate);
+        dest.writeString(mTitle);
+        dest.writeByte((byte) (mVideo == null ? 0 : mVideo ? 1 : 2));
+        if (mVoteAverage == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(mVoteAverage);
+        }
+        if (mVoteCount == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(mVoteCount);
+        }
+    }
 }

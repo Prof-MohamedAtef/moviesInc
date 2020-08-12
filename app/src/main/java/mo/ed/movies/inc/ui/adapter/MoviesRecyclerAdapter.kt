@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item.view.*
 import mo.ed.movies.inc.R
-import mo.ed.movies.inc.responses.Item
+import mo.ed.movies.inc.responses.moviesListResponse.Item
 import mo.ed.movies.inc.ui.activities.MovieDetailActivity
 import mo.ed.movies.inc.util.Constants
 

@@ -11,8 +11,8 @@ import mo.ed.movies.inc.BuildConfig
 import mo.ed.movies.inc.R
 import mo.ed.movies.inc.common.network.Http
 import mo.ed.movies.inc.common.network.RetrofitService
-import mo.ed.movies.inc.responses.Item
-import mo.ed.movies.inc.responses.MoviesListResponse
+import mo.ed.movies.inc.responses.moviesListResponse.Item
+import mo.ed.movies.inc.responses.moviesListResponse.MoviesListResponse
 import mo.ed.movies.inc.ui.adapter.MoviesRecyclerAdapter
 import retrofit2.Call
 import retrofit2.Callback

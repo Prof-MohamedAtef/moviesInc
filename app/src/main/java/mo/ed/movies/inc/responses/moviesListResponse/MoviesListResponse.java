@@ -1,5 +1,5 @@
 
-package mo.ed.movies.inc.responses;
+package mo.ed.movies.inc.responses.moviesListResponse;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;

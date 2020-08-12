@@ -1,14 +1,11 @@
 
-package mo.ed.movies.inc.responses;
+package mo.ed.movies.inc.responses.moviesListResponse;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
-
-import mo.ed.movies.inc.util.Constants;
 
 @SuppressWarnings("unused")
 public class Item implements Parcelable {

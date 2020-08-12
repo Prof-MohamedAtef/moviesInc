@@ -3,5 +3,6 @@
     <string name="vote_Average">Vote Average:</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="movie_overview">Hollywood, 1927: As silent movie star George Valentin wonders if the arrival of talking pictures will cause him to fade into oblivion, he sparks with Peppy Miller, a young dancer set for a big break.</string>
-    <string name="internet_disabled">Internet Disabled!</string>
+    <string name="internet_disabled">Internet Disabled! Cannot rate right now!</string>
+    <string name="error_401">401 response error-not Authorized</string>
 </resources>

@@ -47,10 +47,6 @@ class MovieDetailActivity : AppCompatActivity() {
         movieTitle.text= movie?.title
         tvScreenTitle.text= movie?.title
         movieReleaseYear.text=movie?.releaseDate
-        val list=movie?.genreIds
-//        for (i in 0 until list!!.size){
-//            movieGenre.append(list[i].toString())
-//        }
         movieReleaseYear.text=movie?.releaseDate
         movieOverview.text=movie?.overview
 

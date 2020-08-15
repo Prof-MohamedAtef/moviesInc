@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.actor_item.view.*
@@ -26,6 +27,7 @@ class ActorsRecyclerAdapter(val context : Context, private val actors:List<Cast>
         private val  actorProfile=view.actorProfile
         private val actorName=view.actorName
         private val actorCharacter=view.actorCharacter
+        public val actor_constraint=view.actor_constraint_layout
 
         fun bind(actor: Cast, context: Context){
             val completePath= Constants.POSTER_BASE_PATH +actor.profilePath
@@ -47,5 +49,9 @@ class ActorsRecyclerAdapter(val context : Context, private val actors:List<Cast>
 
     override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
         holder.bind(actors[position],context)
+        holder.actor_constraint.setOnClickListener {
+            val actorName= actors[position].name
+            Toast.makeText(context,  actorName, Toast.LENGTH_LONG).show()
+        }
     }
 }

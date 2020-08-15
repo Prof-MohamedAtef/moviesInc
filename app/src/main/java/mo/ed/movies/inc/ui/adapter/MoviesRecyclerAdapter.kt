@@ -28,14 +28,8 @@ class MoviesRecyclerAdapter(val context : Context, private val movies:List<Item>
         public val layout=view.constraint_layout
 
         fun bind(movie: Item, context: Context){
-//            val options = RequestOptions()
-//                .placeholder(R.drawable.image_loader)
-//                .circleCrop()
-//                .error(R.drawable.image_loader)
             val completePath= Constants.POSTER_BASE_PATH +movie.posterPath
             Glide.with(context)
-//                .setDefaultRequestOptions(options)
-
                 .load(completePath)
                 .into(moviePoster)
             Log.e("MoviePoster", movie.posterPath)
